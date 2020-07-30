@@ -1,7 +1,7 @@
 <template>
 <div class="main-box">
+    <router-link :to="{path:'detail/'+movie.id}">
     <h3>{{ movie.title }}</h3>
-    <router-link to="/detail">
         </router-link>
 </div>
 </template>

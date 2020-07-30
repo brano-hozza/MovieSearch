@@ -22,6 +22,9 @@ export default {
     mutations:{
         addMovie(state, movie){
             state.movies.push(new Movie(movie))
+        },
+        flushMovies(state){
+            state.movies = [];
         }
 
     }

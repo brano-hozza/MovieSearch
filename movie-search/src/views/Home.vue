@@ -1,12 +1,11 @@
 <template>
   <div class="home">
-    <SearchComponent/>
-    <MovieBoxComponent v-for="movie in movies" :key="movie.id" :movie="movie"/>
+    <SearchComponent @update="loadData"/>
+    <MovieBoxComponent v-for="a_movie in movies" :key="a_movie.id" :movie="a_movie"></MovieBoxComponent>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import SearchComponent from '../components/SearchComponent';
 import MovieBoxComponent from '../components/MovieBoxComponent';
 
@@ -17,6 +16,12 @@ export default {
       movies:[]
 
     })
+  },
+  methods:{
+    loadData(){
+      this.movies = this.$store.state.movies.movies;
+      console.log(this.movies);
+    }
   },
   components: {
     SearchComponent,
