@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <SearchComponent @update="loadData"/>
-    <MovieBoxComponent v-for="a_movie in movies" :key="a_movie.id" :movie="a_movie"></MovieBoxComponent>
+    <MovieBoxComponent v-for="(a_movie, index) in movies" :key="index" :index="index" :movie="a_movie"></MovieBoxComponent>
   </div>
 </template>
 
