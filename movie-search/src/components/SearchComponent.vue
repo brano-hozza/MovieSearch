@@ -27,6 +27,7 @@ export default {
     phrase: {
       handler(val) {
         if (val.length > 3) {
+          this.$emit("loading");
           this.debouncedLoadData();
         } else {
           this.$store.commit("flushMovies");
@@ -52,9 +53,11 @@ export default {
       })
         .then((response) => {
           this.$store.commit("flushMovies");
-          response.data.d = response.data.d
-            .filter((val) => "q" in val)
-            .map((movie) => this.$store.commit("addMovie", movie));
+          if (this.phrase.length > 3) {
+            response.data.d = response.data.d
+              .filter((val) => "q" in val)
+              .map((movie) => this.$store.commit("addMovie", movie));
+          }
           this.$emit("update");
         })
         .catch((error) => {

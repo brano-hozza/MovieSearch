@@ -28,7 +28,9 @@
       <v-col>
         <v-card class="mx-auto pa-4" max-width="500" height="150">
           <v-card-text style="text-align:center">
-            <div v-if="movie.title.titleType=='movie' || movie.title.titleType=='tvMovie' ">
+            <div
+              v-if="movie.title.titleType=='movie' || movie.title.titleType=='tvMovie' || movie.title.titleType=='video'  "
+            >
               <h2 style="display:inline;">Movie:</h2>
               {{movie.title.year}}
               <p>Running time: {{movie.title.runningTimeInMinutes}} minutes</p>
@@ -115,6 +117,7 @@ export default {
       },
     })
       .then((response) => {
+        console.log(response);
         this.movie = response.data;
         this.loaded = true;
       })

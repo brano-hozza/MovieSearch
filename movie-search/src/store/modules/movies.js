@@ -13,7 +13,7 @@ class Movie {
                 height: obj.i.height,
                 width: obj.i.width
             }
-        }else{
+        } else {
             this.image = null;
         }
     }
